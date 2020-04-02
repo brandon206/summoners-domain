@@ -2,34 +2,19 @@
   <v-app>
     <div>
       <!-- <Navbar/> -->
-      <!-- <v-toolbar dense>
-        <v-app-bar-nav-icon></v-app-bar-nav-icon>
-        <v-toolbar-title>
-          <router-link :to="{ name: 'home'}">Home</router-link>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-
-        <v-btn icon>
-          <v-icon>mdi-magnify</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-heart</v-icon>
-        </v-btn>
-
-        <v-btn icon>
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-      </v-toolbar> -->
-      <v-tabs>
-        <v-tab>
-          <router-link :to="{ name: 'home'}">Home</router-link>
+      <v-tabs 
+        dark
+        background-color="#385E72"
+        color="white"
+      >
+        <v-tab :to="{ name: 'home'}" exact>
+          Home
         </v-tab>
-        <v-tab>
-          <router-link :to="{ name: 'home'}">Champions</router-link>
+        <v-tab :to="{ name: 'champions'}">
+          Champions
         </v-tab>
-        <v-tab>
-          <router-link :to="{ name: 'home'}">Items</router-link>
+        <v-tab :to="{ name: 'items'}">
+          Items
         </v-tab>
       </v-tabs>
       <!-- End Navbar -->
@@ -41,9 +26,8 @@
 </template>
 
 <script>
-import NavBar from './components/Navbar';
 export default {
-  
+
 };
 </script>
 

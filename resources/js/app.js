@@ -1,3 +1,5 @@
+// require('./bootstrap');
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -14,6 +16,7 @@ import Vuetify from 'vuetify';
 import Index from './Index';
 
 window.Vue = require('vue');
+window.axios = require('axios');
 
 /**
  * The following block of code may be used to automatically register your
