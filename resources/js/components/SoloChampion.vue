@@ -3,9 +3,13 @@
     <v-app style="background-color: #D9E4EC">
       <v-container fluid>
         <div>
-          <p v-if="loading">
-            data is loading...
-          </p>
+          <div class="text-center" v-if="loading">
+            <v-progress-circular
+              :size="100"
+              color="primary"
+              indeterminate
+            ></v-progress-circular>
+          </div>
           <div v-else>
             <div style="margin: 0 auto; max-width:600px" class="my-2">
               <v-btn medium color="primary" @click="goBack">Back</v-btn>
@@ -13,8 +17,13 @@
             <v-card
               class="mx-auto mt-4"
               max-width="600px"
+              dark
               tile
-              style="border-radius: 4px 4px 0px 0px"
+              style="
+                border-radius: 4px 4px 0px 0px;
+                background: url(https://summoners-domain.s3-us-west-2.amazonaws.com/tft-background.jpg) no-repeat 50%;
+                background-size: cover;
+              "
             >
               <div class="d-flex flex-no-wrap">
                 <v-avatar
@@ -76,7 +85,7 @@
                     Champion Stats:
                   </span>
                 </v-card-title>
-                <v-card-text>
+                <v-card-text class="font-weight-bold">
                   <div>Health: {{ champion.hp_lvl_1 }} / {{ champion.hp_lvl_2 }} / {{ champion.hp_lvl_3 }}</div>
                   <div>Attack Damage: {{ champion.atk_dmg_lvl_1 }} / {{ champion.atk_dmg_lvl_2 }} / {{ champion.atk_dmg_lvl_3 }}</div>
                   <div>Attack Speed: {{ champion.attack_speed  }}</div>
@@ -111,10 +120,10 @@
                   size="85"
                   tile
                 >
-                  <v-img :src="champion.ability_image"></v-img>
+                  <v-img :src="champion.ability.image"></v-img>
                 </v-avatar>
                 <div>
-                  <v-card-title class="headline">{{ champion.ability_name }}</v-card-title>
+                  <v-card-title class="headline">{{ champion.ability.name }}</v-card-title>
                   <v-card-subtitle>
                     <div>
                       <span v-if="champion.champion_full_mana !== 0">
@@ -137,10 +146,16 @@
                   </v-card-subtitle>
                   <v-card-text>
                     <div>
-                      {{ champion.ability_description }}
+                      {{ champion.ability.description }}
                     </div>
-                    <div>
-                      Damage: {{ champion.ability_dmg_lvl_1 }} / {{ champion.ability_dmg_lvl_2 }} / {{ champion.ability_dmg_lvl_3 }}
+                    <div class="font-weight-bold">
+                      {{champion.ability.ability_stat_1}}: {{ champion.ability.ability_stat_1_lvl_1 }} / {{ champion.ability.ability_stat_1_lvl_2 }} / {{ champion.ability.ability_stat_1_lvl_3 }}
+                    </div>
+                    <div v-if="champion.ability.ability_stat_2" class="font-weight-bold">
+                      {{champion.ability.ability_stat_2}}: {{ champion.ability.ability_stat_2_lvl_1 }} / {{ champion.ability.ability_stat_2_lvl_2 }} / {{ champion.ability.ability_stat_2_lvl_3 }}
+                    </div>
+                    <div v-if="champion.ability.ability_stat_3" class="font-weight-bold">
+                      {{champion.ability.ability_stat_3}}: {{ champion.ability.ability_stat_3_lvl_1 }} / {{ champion.ability.ability_stat_3_lvl_2 }} / {{ champion.ability.ability_stat_3_lvl_3 }}
                     </div>
                     <div style="text-align: right"><small>*stats with three values define stats for each star level</small></div>
                   </v-card-text>
@@ -203,7 +218,7 @@
                       >
                         {{ trait.bronze_set }}
                       </div>
-                      <div style="display: inline-block;">: {{ trait.bronze_ability }}</div>
+                      <div class="font-weight-bold" style="display: inline-block;">: {{ trait.bronze_ability }}</div>
                     </div>
                     <div v-if="trait.silver_set">
                       <div 
@@ -221,7 +236,7 @@
                       >
                         {{ trait.silver_set }}
                       </div>
-                      <div style="display: inline-block">: {{ trait.silver_ability }}</div>
+                      <div class="font-weight-bold" style="display: inline-block">: {{ trait.silver_ability }}</div>
                     </div>
                     <div v-if="trait.gold_set">
                       <div 
@@ -239,7 +254,7 @@
                       >
                         {{ trait.gold_set }}
                       </div>
-                      <div style="display: inline-block;">: {{ trait.gold_ability }}</div>
+                      <div class="font-weight-bold" style="display: inline-block;">: {{ trait.gold_ability }}</div>
                     </div>
                   </v-card-text>
                   <v-divider></v-divider>

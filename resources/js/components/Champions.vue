@@ -32,7 +32,8 @@
                     light
                     hover
                     :to="{ name: 'champions.id', params: {id: champion.id } }"
-                    :style="`border: 2px solid ${fillColor(champion.cost)}`"
+                    :style="`
+                      border: 2px solid ${fillColor(champion.cost)};`"
                   >
                     <v-avatar
                       class="ma-3"
@@ -74,7 +75,7 @@ export default {
       champions: null,
       loading: false,
       traits: '',
-    }
+    };
   },
   methods: {
     fillColor(cost) {

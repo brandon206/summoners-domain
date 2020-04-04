@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Champion;
-use App\ChampionTrait;
+use App\Item;
 
-class ChampionsController extends Controller
+class ItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,17 +15,8 @@ class ChampionsController extends Controller
      */
     public function index()
     {
-        $champion_data = Champion::all();
-        foreach ($champion_data as $champion)
-        {
-            $traits = $champion::find($champion->id)->traits;
-            $listOfTraits = [];
-            for ($x = 0; $x < count($traits); $x++) {
-                array_push($listOfTraits, $traits[$x]->trait); 
-            }
-            $champion->traits = $listOfTraits;
-        }
-        return $champion_data;
+        $items = Item::orderBy('id')->get();
+        return $items;
     }
 
     /**
@@ -58,16 +48,7 @@ class ChampionsController extends Controller
      */
     public function show($id)
     {
-        $champion_data = Champion::find($id);
-        $traits = $champion_data->traits;
-        $ability = $champion_data->ability;
-        $listOfTraits = [];
-        for ($x = 0; $x < count($traits); $x++) {
-            array_push($listOfTraits, $traits[$x]->trait);
-        }
-        $champion_data->ability = $ability;
-        $champion_data->traits = $listOfTraits;
-        return $champion_data;
+        //
     }
 
     /**

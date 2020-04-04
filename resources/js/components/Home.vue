@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app>
+    <v-app style="background-color: #D9E4EC">
       <v-container fluid>
         <v-row
           align="center"
@@ -11,7 +11,7 @@
             <!-- Insert Summoner's Domain Image Here -->
             <v-img
               class="mx-auto" max-width="344"
-              src="https://picsum.photos/510/300?random"
+              src="https://summoners-domain.s3-us-west-2.amazonaws.com/tft-cast.jpg"
               aspect-ratio="1.7"
             ></v-img>
             <v-card class="mx-auto" max-width="344" raised>

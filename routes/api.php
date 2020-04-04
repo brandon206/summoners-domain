@@ -20,3 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::apiResource("champions", "Api\ChampionsController");
 Route::get("champions/{id}", "Api\ChampionsController@show");
+
+Route::apiResource("items", "Api\ItemsController");

@@ -11,4 +11,9 @@ class Champion extends Model
     {
         return $this->hasMany('App\ChampionTrait', 'champion_id');
     }
+    // Get the Ability Stats for the champion
+    public function ability()
+    {
+        return $this->hasOne('App\ChampionAbility', 'champion_id', 'id');
+    }
 }
